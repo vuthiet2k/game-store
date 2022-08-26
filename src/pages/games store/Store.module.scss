@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  background-color: #0f1011;
+  .inner {
+    margin-top: 15px;
+    padding-bottom: 280px;
+    padding-top: 25px;
+    display: flex;
+
+    h1 {
+      font-size: 64px;
+    }
+  }
+}
+.container {
+  color: #fff;
+  margin-right: 15px;
+}
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  .avatar {
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+}

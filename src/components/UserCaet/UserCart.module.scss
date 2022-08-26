@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    .icon {
+        width: 24px;
+        height: 27px;
+    }
+    .cart {
+      margin-left: 50px;
+      img {
+        width: 20px;
+      }
+    }
+}
