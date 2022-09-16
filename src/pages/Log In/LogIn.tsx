@@ -3,13 +3,14 @@ import Contact from "../../components/Contact/Contact";
 import styles from "./LogIn.module.scss";
 import LogoLogin from "../../assets/images/login.png";
 import iconIntagram from "../../assets/icon/instagram.png";
-import Button from "../../components/Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { postData } from "../../apis";
+import { Button } from "@mui/material";
 
 const cx = classNames.bind(styles);
 
 function LogIn() {
-  const [email, setEmail] = useState("");
+  const [account, setEmail] = useState("");
   const [pass, setPass] = useState("");
   
   const handlerEmail = (e: { target: { value: any; }; }) => {
@@ -20,6 +21,12 @@ function LogIn() {
     // eslint-disable-next-line no-const-assign
     setPass( e.target.value)
   }
+  // useEffect(() => {
+  //   postData('user', {
+  //     account: account,
+  //     password: pass
+  //   })
+  // }, [account])
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
@@ -41,7 +48,7 @@ function LogIn() {
                 onChange={handlerPass}
               />
               <button type="submit" id={cx("submit")}>
-                <Button to="/">Đăng nhập</Button>
+                <Button href="/">Đăng nhập</Button>
               </button>
             </div>
             <span className={cx("or")}>--- Hoặc ---</span>
@@ -55,7 +62,7 @@ function LogIn() {
           <div className={cx("register")}>
             <span className={cx("color-white")}>Bạn chưa có tài khoản ư?</span>
             <button className={cx("btn-register")}>
-              <Button to="/register">Đăng ký</Button>
+              <Button href="/register">Đăng ký</Button>
             </button>
           </div>
         </div>

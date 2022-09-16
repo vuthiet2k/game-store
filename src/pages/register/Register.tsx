@@ -1,8 +1,8 @@
 import classNames from "classnames/bind";
-import Button from "../../components/Button/Button";
 import Contact from "../../components/Contact/Contact";
 import styles from "./Register.module.scss";
 import iconIntagram from "../../assets/icon/instagram.png";
+import { Button } from "@mui/material";
 
 const cx = classNames.bind(styles);
 
@@ -47,14 +47,14 @@ function Register() {
               <b>Chính sách cookie</b> của chúng tôi.
             </div>
             <button type="submit" id={cx("submit")}>
-              <Button to="/">Đăng ký</Button>
+              <Button href="/">Đăng ký</Button>
             </button>
           </div>
         </div>
         <div className={cx("login")}>
           <span className={cx("color-white")}>Bạn chưa có tài khoản ư?</span>
           <button className={cx("btn-login")}>
-            <Button to="/log-in">Đăng nhập</Button>
+            <Button href="/log-in">Đăng nhập</Button>
           </button>
         </div>
       </div>

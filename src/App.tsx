@@ -1,26 +1,35 @@
-import "./App.scss";
-import { publicRoutes } from "./routes/Router";
-import { RouteType } from "./routes/Router";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Game from "./pages/games/Game";
+import { Layout } from "./components";
+import LogIn from "./pages/Log In/LogIn";
+import Register from "./pages/register/Register";
+import Home from "./pages/home/Home";
+import Store from "./pages/games store/Store";
+import EroPage from "./pages/404 page/EroPage";
+import Cart from "./pages/Cart/Cart";
+import { Topic } from "./components/Outlet/Topic";
+import CartProvider from "./context/CartContext";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
+    <CartProvider>
+      <Router>
         <Routes>
-          {publicRoutes.map((route: RouteType, index: number) => {
-            const Page = route.components;
-            return <Route key={index} path={route.path} element={<Page />} />;
-          })}
+          <Route path="/" element={<Home />} />
+          <Route element={<Layout />}>
+            <Route path="/log-in" element={<LogIn />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/store" element={<Store />}>
+              <Route path="/store" element={<Topic />} />
+              <Route path="/store/:productID" element={<Game />} />
+            </Route>
+            <Route path="/404" element={<EroPage />} />
+          </Route>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<EroPage />} />
         </Routes>
-        <Routes>
-        <Route path="store/">
-        <Route path=":productID" element={<Game />} />
-      </Route>
-        </Routes>
-      </div>
-    </Router>
+      </Router>
+    </CartProvider>
   );
 }
 

@@ -1,33 +1,48 @@
-import classNames from "classnames/bind";
-import Button from "../Button/Button";
 import iconHeadUser from "../../assets/icon/headuser.svg";
 import iconHeadCart from "../../assets/icon/headcart.svg";
 
-import styles from "./UserCart.module.scss";
+import { Box, Button, styled } from "@mui/material";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { red } from "@mui/material/colors";
-
-const cx = classNames.bind(styles);
 
 function UserCart() {
+  const { cart } = useContext(CartContext);
   return (
-    <div className={cx("wrapper")}>
-      <div className={cx("user")}>
-        <Button to="/log-in">
-          <img className={cx("icon")} alt="icon" src={iconHeadUser} />
-          <h3>Hoang Vu Thiet</h3>
+    <Box>
+      <Link to="/log-in" style={{textDecoration: 'none'}}>
+        <Button sx={{ textTransform: "none", color: "#fff", gap: "16px" }}>
+          <IconRoute alt="icon" src={iconHeadUser} />
+          <H3Route>Hoang Vu Thiet</H3Route>
         </Button>
-      </div>
-      <div className={cx("cart")}>
-        <Button to="#">
-          <img className={cx("icon")} alt="icon" src={iconHeadCart} />
-          <Link to="/cart">
-            <h3 style={{color: "#fff"}}>Cart: 0</h3>
-          </Link>
+      </Link>
+
+      <Link to="/cart" style={{textDecoration: 'none'}}>
+        <Button
+          sx={{
+            textTransform: "none",
+            color: "#fff",
+            gap: "16px",
+            marginLeft: "30px",
+          }}
+        >
+          <IconRoute alt="icon" src={iconHeadCart} />
+          <H3Route>{cart.length}</H3Route>
         </Button>
-      </div>
-    </div>
+      </Link>
+    </Box>
   );
 }
+
+const IconRoute = styled("img")({
+  width: "24px",
+  height: "27px",
+});
+
+const H3Route = styled("h3")({
+  color: "#fff",
+  fontSize: "18px",
+  whiteSpace: "nowrap",
+});
 
 export default UserCart;

@@ -1,9 +1,8 @@
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getData } from "../../apis";
-import Header from "../../part/Haeder/Header";
 
 export interface Product {
   id?: number;
@@ -17,7 +16,7 @@ function Game() {
   const [product, setProduct] = useState<Product>({});
   useEffect(() => {
     getData(`name/${productID}`).then((res) => {
-      setProduct(res.data);
+      setProduct(res?.data);
     });
     getData("name").catch((err) => {
       console.log(err);
@@ -26,7 +25,6 @@ function Game() {
 
   return (
     <div>
-      <Header />
       <Box sx={{ backgroundColor: "#000", padding: "30px 50px" }}>
         <Box>
           <Stack
@@ -41,9 +39,21 @@ function Game() {
               <ArrowBackIcon />
               <Typography variant="h4">Store</Typography>
             </Button>
-            <Typography variant="h2" sx={{ color: "#fff" }}>
+            <Typography
+              variant="h2"
+              sx={{
+                color: "#fff",
+                fontFamily: "GT Ultrabold",
+                fontSize: "3.3em",
+                letterSpacing: "1px",
+              }}
+            >
               {product.name}
             </Typography>
+          </Stack>
+          <Stack direction="row" spacing={2} mt={5}>
+              <Grid xs={8} sx={{backgroundImage: `url(${product.avatar})`, backgroundSize: 'contaitn', height: '550px'}}></Grid>
+              <Grid xs={4}> title</Grid>
           </Stack>
         </Box>
       </Box>

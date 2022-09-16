@@ -1,19 +1,14 @@
-import classNames from "classnames/bind";
+import { Box } from "@mui/material";
 
-import Header from "../../part/Haeder/Header";
-import styles from "./EroPage.module.scss"
-
-const cx = classNames.bind(styles);
+import Header from "../../components/Haeder/Header";
 
 function EroPage() {
-    return (
-        <div className={cx("wrapper")}>
-            <Header />
-            <div className={cx("inner")}>
-                404 ERROR
-            </div>
-        </div>
-    )
+  return (
+    <Box>
+      <Header />
+      <Box mt={10}>404 error</Box>
+    </Box>
+  );
 }
 
 export default EroPage;
