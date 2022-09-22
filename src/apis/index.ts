@@ -18,6 +18,17 @@ export async function postData(url: string, props: object) {
   return res;
 }
 
+export async function putData(url: string, props: object) {
+  try {
+    const res = await axios.put(`${PROXY}/${url}`, {
+      ...props
+    });
+    return res;
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
 export async function deleteData(url: string) {
   await axios.delete(`${PROXY}/${url}`);
 }

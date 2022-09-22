@@ -1,48 +1,39 @@
 import { Box, Button, TextField } from "@mui/material";
 import { postData, getData, deleteData } from "../../apis";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import Header from "../../components/Haeder/Header";
 
 function Cart() {
-  const [job, setJob] = useState<string>("");
-  const [data, setData] = useState<any[]>([]);
-  console.log(data);
-  async function handleOnClick() {
-    setJob("");
-    postData("job", { job: job }).then((res) => setData([res.data, ...data]));
-  }
-  const handlerDelete = (id: string) => {
-    deleteData(`job/${id}`);
-    setData(data.filter((item) => item.id !== id));
-  };
+  // const [job, setJob] = useState<string>("");
+  // const [data, setData] = useState<any[]>([]);
+  // async function handleOnClick() {
+  //   setJob("");
+  //   postData("job", { job: job }).then((res) => setData([res.data, ...data]));
+  // }
+  // const handlerDelete = (id: string) => {
+  //   deleteData(`job/${id}`);
+  //   setData(data.filter((item) => item.id !== id));
+  // };
 
-  useEffect(() => {
-    getData("job").then((res) => setData(res?.data));
-  }, []);
+  // useEffect(() => {
+  //   getData("job").then((res) => setData(res?.data));
+  // }, []);
+  const { cart, setCart } = useContext(CartContext);
+
+  const handlerDelete = () => {};
 
   return (
     <Box m={10}>
-      <TextField
-        id="post"
-        label="TEST POST"
-        variant="outlined"
-        value={job}
-        onChange={(e) => setJob(e.target.value)}
-      />
-      <Button type="submit" onClick={() => handleOnClick()}>
-        Submit
-      </Button>
-
+      <Header />
       <Box>
         <ul>
-          {data && data.length > 0
-            ? data?.map((jobapi, index) => {
+          {cart && cart.length > 0
+            ? cart?.map((game, index) => {
                 return (
                   <li key={index}>
-                    {jobapi?.job}
-                    <Button
-                      type="submit"
-                      onClick={() => handlerDelete(jobapi?.id)}
-                    >                      
+                    {game.name}
+                    <Button type="submit" onClick={handlerDelete}>
                       X
                     </Button>
                   </li>

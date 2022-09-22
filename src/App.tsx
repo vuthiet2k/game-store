@@ -9,6 +9,7 @@ import EroPage from "./pages/404 page/EroPage";
 import Cart from "./pages/Cart/Cart";
 import { Topic } from "./components/Outlet/Topic";
 import CartProvider from "./context/CartContext";
+import PrivateRoutes from "./components/PrivateRouter/PrivateRouter";
 
 function App() {
   return (
@@ -18,14 +19,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route element={<Layout />}>
             <Route path="/log-in" element={<LogIn />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/store" element={<Store />}>
-              <Route path="/store" element={<Topic />} />
-              <Route path="/store/:productID" element={<Game />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/store" element={<Store />}>
+                <Route path="/store" element={<Topic />} />
+                <Route path="/store/:productID" element={<Game />} />
+              </Route>
+              <Route path="/cart" element={<Cart />} />
             </Route>
+            <Route path="/register" element={<Register />} />
             <Route path="/404" element={<EroPage />} />
           </Route>
-          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<EroPage />} />
         </Routes>
       </Router>

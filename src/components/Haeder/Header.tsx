@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
+import { AppBar, Button, styled, Toolbar } from "@mui/material";
 
 import UserCart from "../UserCaet/UserCart";
 import iconHeadHome from "../../assets/icon/headgame.svg";
 import SearchHead from "../../assets/icon/headersearch.svg";
-import { AppBar, Button, styled, Toolbar } from "@mui/material";
-import { Box } from "@mui/system";
-import { Link } from "react-router-dom";
 
 function Header() {
   const [search, setSearch] = useState("");

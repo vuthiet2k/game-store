@@ -9,10 +9,12 @@ export type CartContextType = {
     setCart: React.Dispatch<React.SetStateAction<CartType[]>>
 };
 
-export interface ProductType {
+export type ProductType = {
+    id: number;
     to: string;
-    src?: string;
+    src: string;
     name: string;
     money: string;
-    onCLick?: () => void;
+    love: boolean;
+    about?: string;
 }

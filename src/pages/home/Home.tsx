@@ -109,7 +109,7 @@ function Home() {
               hour support, "best price" guarantee and a flawless UX. Wish for
               more? Tell us below — or check out our&nbsp;
               <Typography
-                variant="h5"
+                variant="body1"
                 align="center"
                 sx={{
                   color: "#45c1bc",

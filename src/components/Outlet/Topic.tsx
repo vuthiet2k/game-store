@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography, } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getData } from "../../apis";
 import Product from "../Product/Product";
@@ -9,11 +9,8 @@ export const Topic = () => {
   const [layout, setLayout] = useState<number>(3);
   const [allData, setAllData] = useState<any[]>([]);
   useEffect(() => {
-    getData("name").then((res) => {
+    getData("products").then((res) => {
       setAllData(res?.data);
-    });
-    getData("name").catch((err) => {
-      console.log(err);
     });
   }, []);
 
@@ -126,19 +123,30 @@ export const Topic = () => {
           container
           spacing={2}
           sx={{
-            display: "inline-flex",
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
           {allData.map((product, index) => {
             return (
-              <Grid item={true} xs={layout} key={index}>
+              <Grid
+                item={true}
+                xs={layout}
+                key={index}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <Product
+                  id={product.id}
                   to={`/store/${product.id}`}
                   name={product.name}
                   src={product.avatar}
-                  money={product.id}
+                  money={product.price}
+                  love={product.isLove}
                 />
               </Grid>
             );

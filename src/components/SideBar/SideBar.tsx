@@ -212,7 +212,7 @@ function SideBar() {
   );
 }
 
-const ButtonSideBar = styled("button")({
+const ButtonSideBar = styled("div")({
   width: "270px",
   paddingTop: "10px",
   background: "#000",
