@@ -1,46 +1,35 @@
-import { Box, Button, TextField } from "@mui/material";
-import { postData, getData, deleteData } from "../../apis";
-import { useContext, useEffect, useState } from "react";
+import { Box, Button, Paper } from "@mui/material";
+import { deleteData } from "../../apis";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import Header from "../../components/Haeder/Header";
+import { CartType } from "../../@type/cart";
+import { Stack } from "@mui/system";
 
 function Cart() {
-  // const [job, setJob] = useState<string>("");
-  // const [data, setData] = useState<any[]>([]);
-  // async function handleOnClick() {
-  //   setJob("");
-  //   postData("job", { job: job }).then((res) => setData([res.data, ...data]));
-  // }
-  // const handlerDelete = (id: string) => {
-  //   deleteData(`job/${id}`);
-  //   setData(data.filter((item) => item.id !== id));
-  // };
-
-  // useEffect(() => {
-  //   getData("job").then((res) => setData(res?.data));
-  // }, []);
+  const handlerDelete = (id: number) => {
+    deleteData(`cart/${id}`);
+    setCart(cart.filter((item) => item.id !== id));
+  };
   const { cart, setCart } = useContext(CartContext);
-
-  const handlerDelete = () => {};
-
   return (
     <Box m={10}>
       <Header />
       <Box>
-        <ul>
+        <Stack>
           {cart && cart.length > 0
-            ? cart?.map((game, index) => {
+            ? cart?.map((game: CartType) => {
                 return (
-                  <li key={index}>
+                  <Paper key={game.id}>
                     {game.name}
-                    <Button type="submit" onClick={handlerDelete}>
+                    <Button type="submit" onClick={() => handlerDelete(game.id)}>
                       X
                     </Button>
-                  </li>
+                  </Paper>
                 );
               })
             : "loading"}
-        </ul>
+        </Stack>
       </Box>
     </Box>
   );

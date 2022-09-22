@@ -19,13 +19,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route element={<Layout />}>
             <Route path="/log-in" element={<LogIn />} />
-            <Route element={<PrivateRoutes />}>
+            {/* <Route element={<PrivateRoutes />}> */}
               <Route path="/store" element={<Store />}>
                 <Route path="/store" element={<Topic />} />
                 <Route path="/store/:productID" element={<Game />} />
               </Route>
               <Route path="/cart" element={<Cart />} />
-            </Route>
+            {/* </Route> */}
             <Route path="/register" element={<Register />} />
             <Route path="/404" element={<EroPage />} />
           </Route>

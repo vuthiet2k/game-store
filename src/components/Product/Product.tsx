@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 import { ProductType } from "../../@type/cart";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
-import { putData } from "../../apis";
+import { postData, putData } from "../../apis";
 
 const Product = ({ id, to, src, name, money, love }: ProductType) => {
   const [isLove, setIsLove] = useState<boolean | undefined>(love);
   const { cart, setCart } = useContext(CartContext);
   const handlerAddCart = () => {
-    setCart([...cart, { id: Number(to), name: name, money: money }]);
+    postData("cart", { id: id, name: name, money: money }).then((res) => setCart([res.data, ...cart]));
   };
   const handlerLove = () => {
     const res = putData(`/products/${id}`, {
