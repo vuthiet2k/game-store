@@ -18,14 +18,15 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
   const [isLove, setIsLove] = useState<boolean | undefined>(love);
   const { cart, setCart } = useContext(CartContext);
   const handlerAddCart = () => {
-    postData("cart", { id: id, name: name, money: money }).then((res) => setCart([res.data, ...cart]));
+    postData("cart", { id: id, name: name, money: money }).then((res) =>
+      setCart([res.data, ...cart])
+    );
   };
   const handlerLove = () => {
-    const res = putData(`/products/${id}`, {
-      isLove: !love,
-    });
-    res.then((data) => {
-      setIsLove(data?.data.isLove);
+    putData(`products/${id}`, {
+      isLove: !love,      
+    }).then((res) => {
+      setIsLove(res?.data.isLove);
     });
   };
 
