@@ -1,5 +1,5 @@
-import iconAddToCart from "../../assets/icon/addToCart.svg";
-import { ReactComponent as IconAddLove } from "../../assets/icon/addLove.svg";
+import iconAddToCart from "../assets/icon/addToCart.svg";
+import { ReactComponent as IconAddLove } from "../assets/icon/addLove.svg";
 import {
   Button,
   Card,
@@ -9,10 +9,10 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { ProductType } from "../../@type/cart";
+import { ProductType } from "../@type/cart";
 import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext";
-import { postData, putData } from "../../apis";
+import { CartContext } from "../context/CartContext";
+import { postData, putData } from "../apis";
 
 const Product = ({ id, to, src, name, money, love }: ProductType) => {
   const [isLove, setIsLove] = useState<boolean | undefined>(love);

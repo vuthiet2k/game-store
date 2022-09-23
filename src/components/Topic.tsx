@@ -1,18 +1,17 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { getData } from "../../apis";
-import Product from "../Product/Product";
-import { ReactComponent as Layout4 } from "../../assets/icon/layoutTopic.svg";
-import { ReactComponent as Layout1 } from "../../assets/icon/layoutTopic1.svg";
+import { useContext, useEffect, useState } from "react";
+import { getData } from "../apis";
+import Product from "./Product";
+import { ReactComponent as Layout4 } from "../assets/icon/layoutTopic.svg";
+import { ReactComponent as Layout1 } from "../assets/icon/layoutTopic1.svg";
+import { CartContext } from "../context/CartContext";
 
 export const Topic = () => {
   const [layout, setLayout] = useState<number>(3);
-  const [allData, setAllData] = useState<any[]>([]);
-  useEffect(() => {
-    getData("products").then((res) => {
-      setAllData(res?.data);
-    });
-  }, []);
+  const {dataUI, allData, setDataUI} = useContext(CartContext);
+  const handlerClearFilter = () => {
+    setDataUI(allData);
+  }
 
   return (
     <Box pb={"280px"} sx={{ display: "block" }}>
@@ -79,6 +78,7 @@ export const Topic = () => {
               padding: "8px 22px",
               fontSize: "14px",
             }}
+            onClick={handlerClearFilter}
           >
             Clear Filter
           </Button>
@@ -128,7 +128,7 @@ export const Topic = () => {
             justifyContent: "center",
           }}
         >
-          {allData.map((product, index) => {
+          {dataUI.map((product, index) => {
             return (
               <Grid
                 item={true}

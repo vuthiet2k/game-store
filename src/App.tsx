@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Game from "./pages/games/Game";
-import { Layout } from "./components";
-import LogIn from "./pages/Log In/LogIn";
+import Game from "./pages/Game";
+import { Layout } from "./components/Layout";
+import LogIn from "./pages/LogIn";
 import Register from "./pages/register/Register";
-import Home from "./pages/home/Home";
-import Store from "./pages/games store/Store";
-import EroPage from "./pages/404 page/EroPage";
-import Cart from "./pages/Cart/Cart";
-import { Topic } from "./components/Outlet/Topic";
+import Home from "./pages/Home";
+import Store from "./pages/Store";
+import EroPage from "./pages/EroPage";
+import Cart from "./pages/Cart";
+import { Topic } from "./components/Topic";
 import CartProvider from "./context/CartContext";
-import PrivateRoutes from "./components/PrivateRouter/PrivateRouter";
+import PrivateRoutes from "./components/PrivateRouter";
 
 function App() {
   return (

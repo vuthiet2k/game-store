@@ -1,18 +1,18 @@
-import bgHome from "../../assets/images/backgroundHome.mp4";
-import iconHeadHome from "../../assets/icon/headgame.svg";
-import iconHeadStore from "../../assets/icon/headstore.svg";
-import iconBodyBrowse from "../../assets/icon/bodybrowse.svg";
-import iconBodyPlayDice from "../../assets/icon/bodyplaydice.svg";
-import iconBodyGithub from "../../assets/icon/bodygithub.svg";
-import iconBodyLinkedLn from "../../assets/icon/bodylinkedln.svg";
-import iconSidebarGame from "../../assets/icon/sidegame.svg";
-import iconSidebarEroPage from "../../assets/icon/sideeropage.svg";
-import iconSidebarEroQuery from "../../assets/icon/sideeroquery.svg";
-import iconSidebarCommit from "../../assets/icon/sidecommit.svg";
-import iconSidebarPerfor from "../../assets/icon/sideperfor.svg";
-import iconSidebarTechnologies from "../../assets/icon/sidetechnologies.png";
-import iconSidebarOurSouce from "../../assets/icon/sideoursouce.svg";
-import UserCart from "../../components/UserCaet/UserCart";
+import bgHome from "../assets/images/backgroundHome.mp4";
+import iconHeadHome from "../assets/icon/headgame.svg";
+import iconHeadStore from "../assets/icon/headstore.svg";
+import iconBodyBrowse from "../assets/icon/bodybrowse.svg";
+import iconBodyPlayDice from "../assets/icon/bodyplaydice.svg";
+import iconBodyGithub from "../assets/icon/bodygithub.svg";
+import iconBodyLinkedLn from "../assets/icon/bodylinkedln.svg";
+import iconSidebarGame from "../assets/icon/sidegame.svg";
+import iconSidebarEroPage from "../assets/icon/sideeropage.svg";
+import iconSidebarEroQuery from "../assets/icon/sideeroquery.svg";
+import iconSidebarCommit from "../assets/icon/sidecommit.svg";
+import iconSidebarPerfor from "../assets/icon/sideperfor.svg";
+import iconSidebarTechnologies from "../assets/icon/sidetechnologies.png";
+import iconSidebarOurSouce from "../assets/icon/sideoursouce.svg";
+import UserCart from "../components/UserCart";
 import {
   AppBar,
   Box,

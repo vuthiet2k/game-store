@@ -1,8 +1,8 @@
-import iconHeadUser from "../../assets/icon/headuser.svg";
-import iconHeadCart from "../../assets/icon/headcart.svg";
+import iconHeadUser from "../assets/icon/headuser.svg";
+import iconHeadCart from "../assets/icon/headcart.svg";
 
 import { Box, Button, styled } from "@mui/material";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 

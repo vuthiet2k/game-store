@@ -1,9 +1,9 @@
 import { Box, Button, Paper } from "@mui/material";
-import { deleteData } from "../../apis";
+import { deleteData } from "../apis";
 import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import Header from "../../components/Haeder/Header";
-import { CartType } from "../../@type/cart";
+import { CartContext } from "../context/CartContext";
+import Header from "../components/Header";
+import { CartType } from "../@type/cart";
 import { Stack } from "@mui/system";
 
 function Cart() {

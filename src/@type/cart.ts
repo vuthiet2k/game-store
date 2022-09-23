@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface CartType  {
     id: number,
     name: string;
@@ -6,7 +8,11 @@ export interface CartType  {
 
 export type CartContextType = {
     cart: CartType[];
-    setCart: React.Dispatch<React.SetStateAction<CartType[]>>
+    setCart: React.Dispatch<React.SetStateAction<CartType[]>>;
+    allData: any[];
+    setAllData: Dispatch<SetStateAction<any[]>>;
+    dataUI: any[];
+    setDataUI: Dispatch<SetStateAction<any[]>>;
 };
 
 export type ProductType = {
@@ -17,4 +23,6 @@ export type ProductType = {
     money: string;
     love: boolean;
     about?: string;
+    wishlist?: boolean;
+    ratting?: boolean;
 }

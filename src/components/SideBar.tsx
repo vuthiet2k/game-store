@@ -1,23 +1,46 @@
-import { ReactComponent as IconFiltersWishlist } from "../../assets/icon/filterswish.svg";
-import { ReactComponent as IconFiltersRating } from "../../assets/icon/filtersrating.svg";
-import { ReactComponent as IconFiltersReviews } from "../../assets/icon/filtersreview.svg";
-import { ReactComponent as IconGenresAction } from "../../assets/icon/genresaction.svg";
-import { ReactComponent as IconGenresStrategy } from "../../assets/icon/genresstrategy.svg";
-import { ReactComponent as IconGenresRPG } from "../../assets/icon/genresrpg.svg";
-import { ReactComponent as IconGenresShooter } from "../../assets/icon/genresshooter.svg";
-import { ReactComponent as IconGenresAdventure } from "../../assets/icon/genresadventure.svg";
-import { ReactComponent as IconGenresPuzzle } from "../../assets/icon/genrespuzzle.svg";
-import { ReactComponent as IconGenresRacing } from "../../assets/icon/genresracing.svg";
-import { ReactComponent as IconGenresSport } from "../../assets/icon/genressport.svg";
+import { ReactComponent as IconFiltersWishlist } from "../assets/icon/filterswish.svg";
+import { ReactComponent as IconFiltersRating } from "../assets/icon/filtersrating.svg";
+import { ReactComponent as IconFiltersReviews } from "../assets/icon/filtersreview.svg";
+import { ReactComponent as IconGenresAction } from "../assets/icon/genresaction.svg";
+import { ReactComponent as IconGenresStrategy } from "../assets/icon/genresstrategy.svg";
+import { ReactComponent as IconGenresRPG } from "../assets/icon/genresrpg.svg";
+import { ReactComponent as IconGenresShooter } from "../assets/icon/genresshooter.svg";
+import { ReactComponent as IconGenresAdventure } from "../assets/icon/genresadventure.svg";
+import { ReactComponent as IconGenresPuzzle } from "../assets/icon/genrespuzzle.svg";
+import { ReactComponent as IconGenresRacing } from "../assets/icon/genresracing.svg";
+import { ReactComponent as IconGenresSport } from "../assets/icon/genressport.svg";
 import { Box, Button, styled } from "@mui/material";
+import { CartContext } from "../context/CartContext";
+import React from "react";
 
 function SideBar() {
+  const {dataUI, setDataUI, allData} = React.useContext(CartContext);
+  
+  const handlerWishList = () => {
+    // Chưa biết tại sao sai?
+    // setDataUI(allData.filter((product) => {
+    //   product.wishlist === true;
+    // }))
+    let data = allData.filter((item)=>{
+      return item.wishlist === true
+    })
+    setDataUI(data)
+  };
+  const handlerRatting = () => {
+    let data = allData.filter((item)=>{
+      return item.ratting === true
+    })
+    setDataUI(data)
+  }
   return (
-    <Box >
+    <Box>
       <Box>
         <H3Title>Filters</H3Title>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerWishList}
+          >
             <IconFiltersWishlist
               style={{
                 width: "39px",
@@ -34,7 +57,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }} onClick={handlerRatting}>
             <IconFiltersRating
               style={{
                 width: "39px",
@@ -51,7 +74,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconFiltersReviews
               style={{
                 width: "39px",
@@ -72,7 +95,7 @@ function SideBar() {
       <Box>
         <H3Title>Genres</H3Title>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresAction
               style={{
                 width: "39px",
@@ -89,7 +112,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresStrategy
               style={{
                 width: "39px",
@@ -106,7 +129,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresRPG
               style={{
                 width: "39px",
@@ -123,7 +146,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresShooter
               style={{
                 width: "39px",
@@ -140,7 +163,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresAdventure
               style={{
                 width: "39px",
@@ -157,7 +180,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresPuzzle
               style={{
                 width: "39px",
@@ -174,7 +197,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresRacing
               style={{
                 width: "39px",
@@ -191,7 +214,7 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: '0'}}>
+          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
             <IconGenresSport
               style={{
                 width: "39px",
