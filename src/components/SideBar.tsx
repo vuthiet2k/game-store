@@ -10,28 +10,21 @@ import { ReactComponent as IconGenresPuzzle } from "../assets/icon/genrespuzzle.
 import { ReactComponent as IconGenresRacing } from "../assets/icon/genresracing.svg";
 import { ReactComponent as IconGenresSport } from "../assets/icon/genressport.svg";
 import { Box, Button, styled } from "@mui/material";
-import { CartContext } from "../context/CartContext";
 import React from "react";
+import { ProductContext } from "../context/ProductContext";
 
 function SideBar() {
-  const {dataUI, setDataUI, allData} = React.useContext(CartContext);
-  
+  const { dataWishlist, setDataUI, dataRatting, dataUI } =
+    React.useContext(ProductContext);
+  console.log("setDataUI", setDataUI, dataUI);
   const handlerWishList = () => {
-    // Chưa biết tại sao sai?
-    // setDataUI(allData.filter((product) => {
-    //   product.wishlist === true;
-    // }))
-    let data = allData.filter((item)=>{
-      return item.wishlist === true
-    })
-    setDataUI(data)
+    setDataUI(dataWishlist);
   };
+
   const handlerRatting = () => {
-    let data = allData.filter((item)=>{
-      return item.ratting === true
-    })
-    setDataUI(data)
-  }
+    setDataUI(dataRatting);
+  };
+
   return (
     <Box>
       <Box>
@@ -57,7 +50,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }} onClick={handlerRatting}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerRatting}
+          >
             <IconFiltersRating
               style={{
                 width: "39px",

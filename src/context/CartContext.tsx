@@ -18,16 +18,9 @@ const CartProvider: React.FC<PropChildren> = ({ children }) => {
       setCart(res?.data);
     });
   }, []);
-  const [allData, setAllData] = React.useState<any[]>([]);
-  const [dataUI, setDataUI] = React.useState<any[]>([]);
-  React.useEffect(() => {
-    getData("products").then((res) => {
-      setAllData(res?.data);
-      setDataUI(res?.data);
-    });
-  }, []);
+  
   return (
-    <CartContext.Provider value={{ cart, setCart, allData, setAllData, dataUI, setDataUI }}>
+    <CartContext.Provider value={{ cart, setCart}}>
       {children}
     </CartContext.Provider>
   );

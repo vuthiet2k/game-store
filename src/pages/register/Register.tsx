@@ -3,10 +3,14 @@ import Contact from "../../components/Contact/Contact";
 import styles from "./Register.module.scss";
 import iconIntagram from "../../assets/icon/instagram.png";
 import { Button } from "@mui/material";
+import React from "react";
 
 const cx = classNames.bind(styles);
 
 function Register() {
+  const [fullName, setFullName] = React.useState('')
+  const [account, setAccount] = React.useState('')
+  const [pass, setPass] = React.useState('')
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
@@ -14,7 +18,7 @@ function Register() {
           <h2 className={cx("h2-logo")}>Store Game</h2>
           <p className={cx("p-logo")}>Đăng kí để trải nghiệm Game Store</p>
           <div className={cx("btn-login")}>
-            <Button href="https://www.instagram.com/accounts/login/?source=auth_switcher">
+            <Button href="#">
               <img src={iconIntagram} alt="icon" className={cx("icon-insta")} />
               Đăng nhập bằng Instagram
             </Button>
@@ -43,19 +47,15 @@ function Register() {
             />
             <div className={cx("rules")}>
               Bằng cách đăng ký, bạn đồng ý với{" "}
-              <b>Điều khoản, Chính sách quyền riêng tư</b> và{" "}
+              <b>Điều khoản, Chính sách quyền riêng tư</b> và&nbsp;
               <b>Chính sách cookie</b> của chúng tôi.
             </div>
-            <button type="submit" id={cx("submit")}>
-              <Button href="/">Đăng ký</Button>
-            </button>
+            <Button href="/">Đăng ký</Button>
           </div>
         </div>
         <div className={cx("login")}>
           <span className={cx("color-white")}>Bạn chưa có tài khoản ư?</span>
-          <button className={cx("btn-login")}>
-            <Button href="/log-in">Đăng nhập</Button>
-          </button>
+          <Button sx={{ backgroundColor: "red" }}>Đăng nhập</Button>
         </div>
       </div>
       <Contact />

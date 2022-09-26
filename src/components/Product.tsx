@@ -13,10 +13,13 @@ import { ProductType } from "../@type/cart";
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { postData, putData } from "../apis";
+import { ProductContext } from "../context/ProductContext";
 
 const Product = ({ id, to, src, name, money, love }: ProductType) => {
-  const [isLove, setIsLove] = useState<boolean | undefined>(love);
-  const { cart, setCart } = useContext(CartContext);
+  const [isLove, setIsLove] = useState<boolean>(love);
+  const { cart, setCart} = useContext(CartContext);
+  const {dataWishlist, setDataWishlist} = useContext(ProductContext)
+  
   const handlerAddCart = () => {
     postData("cart", { id: id, name: name, money: money }).then((res) =>
       setCart([res.data, ...cart])
@@ -24,9 +27,10 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
   };
   const handlerLove = () => {
     putData(`products/${id}`, {
-      isLove: !love,      
+      wishlist: !isLove,      
     }).then((res) => {
-      setIsLove(res?.data.isLove);
+      setIsLove(res?.data.wishlist);
+      setDataWishlist([...dataWishlist, res?.data])
     });
   };
 

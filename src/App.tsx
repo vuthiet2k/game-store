@@ -10,28 +10,31 @@ import Cart from "./pages/Cart";
 import { Topic } from "./components/Topic";
 import CartProvider from "./context/CartContext";
 import PrivateRoutes from "./components/PrivateRouter";
+import { ProductProvider } from "./context/ProductContext";
 
 function App() {
   return (
     <CartProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route element={<Layout />}>
-            <Route path="/log-in" element={<LogIn />} />
-            {/* <Route element={<PrivateRoutes />}> */}
+      <ProductProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route element={<Layout />}>
+              <Route path="/log-in" element={<LogIn />} />
+              {/* <Route element={<PrivateRoutes />}> */}
               <Route path="/store" element={<Store />}>
                 <Route path="/store" element={<Topic />} />
                 <Route path="/store/:productID" element={<Game />} />
               </Route>
               <Route path="/cart" element={<Cart />} />
-            {/* </Route> */}
-            <Route path="/register" element={<Register />} />
-            <Route path="/404" element={<EroPage />} />
-          </Route>
-          <Route path="*" element={<EroPage />} />
-        </Routes>
-      </Router>
+              {/* </Route> */}
+              <Route path="/register" element={<Register />} />
+              <Route path="/404" element={<EroPage />} />
+            </Route>
+            <Route path="*" element={<EroPage />} />
+          </Routes>
+        </Router>
+      </ProductProvider>
     </CartProvider>
   );
 }

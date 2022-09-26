@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import { AppBar, Button, styled, Toolbar } from "@mui/material";
@@ -6,9 +6,20 @@ import { AppBar, Button, styled, Toolbar } from "@mui/material";
 import UserCart from "./UserCart";
 import iconHeadHome from "../assets/icon/headgame.svg";
 import SearchHead from "../assets/icon/headersearch.svg";
+import { getData } from "../apis";
+import { ProductContext } from "../context/ProductContext";
 
 function Header() {
+  const {setDataUI} = useContext(ProductContext)
   const [search, setSearch] = useState("");
+  const handlerChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+  const handlerClickSearch = () => {
+    getData(`products?name=${search}`).then((res) => {
+      setDataUI(res?.data)
+    });
+  };
 
   return (
     <AppBar sx={{ backgroundColor: "#000" }}>
@@ -22,8 +33,12 @@ function Header() {
           </Link>
         </Box>
         <Box sx={{ height: "35px" }} id="hoahoa">
-          <InputSearch placeholder="Search games..." />
-          <Button type="submit">
+          <InputSearch
+            placeholder="Search games..."
+            value={search}
+            onChange={(e) => handlerChangeSearch(e)}
+          />
+          <Button type="submit" onClick={handlerClickSearch}>
             <IconRoute src={SearchHead} alt="icon" />
           </Button>
         </Box>

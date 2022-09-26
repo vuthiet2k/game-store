@@ -1,20 +1,20 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
-import { getData } from "../apis";
+import { useContext, useState } from "react";
 import Product from "./Product";
 import { ReactComponent as Layout4 } from "../assets/icon/layoutTopic.svg";
 import { ReactComponent as Layout1 } from "../assets/icon/layoutTopic1.svg";
 import { CartContext } from "../context/CartContext";
+import { ProductContext } from "../context/ProductContext";
 
 export const Topic = () => {
   const [layout, setLayout] = useState<number>(3);
-  const {dataUI, allData, setDataUI} = useContext(CartContext);
+  const { allData, setDataUI, dataUI } = useContext(ProductContext);
   const handlerClearFilter = () => {
     setDataUI(allData);
-  }
+  };
 
   return (
-    <Box pb={"280px"} sx={{ display: "block" }}>
+    <Box pb={"280px"} sx={{ display: "block", flex: "1" }}>
       <Box>
         <Typography
           variant="h1"
@@ -146,7 +146,7 @@ export const Topic = () => {
                   name={product.name}
                   src={product.avatar}
                   money={product.price}
-                  love={product.isLove}
+                  love={product.wishlist}
                 />
               </Grid>
             );
