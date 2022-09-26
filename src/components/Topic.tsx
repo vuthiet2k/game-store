@@ -126,31 +126,34 @@ export const Topic = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "#fff",
           }}
         >
-          {dataUI.map((product, index) => {
-            return (
-              <Grid
-                item={true}
-                xs={layout}
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Product
-                  id={product.id}
-                  to={`/store/${product.id}`}
-                  name={product.name}
-                  src={product.avatar}
-                  money={product.price}
-                  love={product.wishlist}
-                />
-              </Grid>
-            );
-          })}
+          {dataUI && dataUI.length > 0
+            ? dataUI.map((product, index) => {
+                return (
+                  <Grid
+                    item={true}
+                    xs={layout}
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Product
+                      id={product.id}
+                      to={`/store/${product.id}`}
+                      name={product.name}
+                      src={product.avatar}
+                      money={product.price}
+                      love={product.wishlist}
+                    />
+                  </Grid>
+                );
+              })
+            : "Không có dữ liệu"}
         </Grid>
       </Box>
     </Box>

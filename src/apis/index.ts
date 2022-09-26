@@ -15,6 +15,7 @@ export async function postData(url: string, props: object) {
   const res = await axios.post(`${PROXY}/${url}`, {
     ...props,
   });
+
   return res;
 }
 

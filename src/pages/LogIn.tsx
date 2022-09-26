@@ -9,10 +9,13 @@ import {
   InputLabel,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Email } from "@mui/icons-material";
+import { postData } from "../apis";
 
 function LogIn() {
+  let navigate = useNavigate();
   const [account, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -30,6 +33,19 @@ function LogIn() {
   //     password: pass
   //   })
   // }, [account])
+  const handlerSubmitLogin = () => {
+    postData("user", {
+      password: pass,
+      account: account,
+    })
+      .then((res) => {
+        localStorage.setItem("USER", JSON.stringify(res.data));
+        return navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Box sx={{ backgroundColor: "#000", pt: 10 }}>
       {/* <Box> */}
@@ -87,6 +103,7 @@ function LogIn() {
             </FormControl>
             <Button
               sx={{ backgroundColor: "red", color: "#fff", margin: "30px 0" }}
+              onClick={handlerSubmitLogin}
             >
               Đăng nhập
             </Button>
