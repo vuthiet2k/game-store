@@ -126,7 +126,6 @@ function Home() {
             ml={"44px"}
             mt={"20px"}
             sx={{
-              height: "70px",
               maxWidth: "630px",
               padding: "14px 20px 15px",
               borderRadius: "30px",
