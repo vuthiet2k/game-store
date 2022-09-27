@@ -35,7 +35,7 @@ function Header() {
         </Box>
         {user ? (
           <>
-            <Box sx={{ height: "35px" }} id="hoahoa">
+            <Box sx={{ height: "35px" }}>
               <InputSearch
                 placeholder="Search games..."
                 value={search}
