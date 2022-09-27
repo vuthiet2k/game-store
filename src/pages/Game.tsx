@@ -36,13 +36,13 @@ function Game() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Button
-            href="/store"
-            sx={{ textTransform: "none", color: "rgb(204, 204, 204)" }}
+          <Link
+            to="/store"
+            style={{ textDecoration: "none", color: "rgb(204, 204, 204)" }}
           >
             <ArrowBackIcon />
             <Typography variant="h4">Store</Typography>
-          </Button>
+          </Link>
           <Typography
             variant="h2"
             sx={{
