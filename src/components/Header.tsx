@@ -10,14 +10,15 @@ import { getData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
 
 function Header() {
-  const {setDataUI} = useContext(ProductContext)
+  let user = JSON.parse(localStorage.getItem("USER") || "");
+  const { setDataUI } = useContext(ProductContext);
   const [search, setSearch] = useState("");
   const handlerChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
   const handlerClickSearch = () => {
     getData(`products?name=${search}`).then((res) => {
-      setDataUI(res?.data)
+      setDataUI(res?.data);
     });
   };
 
@@ -32,17 +33,23 @@ function Header() {
             </Button>
           </Link>
         </Box>
-        <Box sx={{ height: "35px" }} id="hoahoa">
-          <InputSearch
-            placeholder="Search games..."
-            value={search}
-            onChange={(e) => handlerChangeSearch(e)}
-          />
-          <Button type="submit" onClick={handlerClickSearch}>
-            <IconRoute src={SearchHead} alt="icon" />
-          </Button>
-        </Box>
-        <UserCart />
+        {user ? (
+          <>
+            <Box sx={{ height: "35px" }} id="hoahoa">
+              <InputSearch
+                placeholder="Search games..."
+                value={search}
+                onChange={(e) => handlerChangeSearch(e)}
+              />
+              <Button type="submit" onClick={handlerClickSearch}>
+                <IconRoute src={SearchHead} alt="icon" />
+              </Button>
+            </Box>
+            <UserCart />
+          </>
+        ) : (
+          ""
+        )}
       </Toolbar>
     </AppBar>
   );
