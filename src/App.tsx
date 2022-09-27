@@ -11,6 +11,7 @@ import { Topic } from "./components/Topic";
 import CartProvider from "./context/CartContext";
 import PrivateRoutes from "./components/PrivateRouter";
 import { ProductProvider } from "./context/ProductContext";
+import EroQuery from "./pages/EroQuery";
 
 function App() {
   return (
@@ -18,7 +19,6 @@ function App() {
       <ProductProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route element={<Layout />}>
               <Route path="/log-in" element={<LogIn />} />
               <Route element={<PrivateRoutes />}>
@@ -30,7 +30,9 @@ function App() {
               </Route>
               <Route path="/register" element={<Register />} />
               <Route path="/404" element={<EroPage />} />
+              <Route path="/query" element={<EroQuery />} />
             </Route>
+            <Route path="/" element={<Home />} />
             <Route path="*" element={<EroPage />} />
           </Routes>
         </Router>

@@ -39,6 +39,7 @@ function LogIn() {
       account: account,
     })
       .then((res) => {
+        localStorage.removeItem("USER");
         localStorage.setItem("USER", JSON.stringify(res.data));
         return navigate("/");
       })

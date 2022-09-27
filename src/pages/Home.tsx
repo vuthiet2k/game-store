@@ -24,6 +24,10 @@ import {
 import { Link } from "react-router-dom";
 
 function Home() {
+  if (!localStorage.getItem("USER")) {
+    localStorage.setItem("USER", JSON.stringify(""));
+  }
+  let user = JSON.parse(localStorage.getItem("USER") || "");
   return (
     <Box>
       <Box
@@ -67,7 +71,7 @@ function Home() {
               </Button>
             </Link>
           </Box>
-          <UserCart />
+          {user ? <UserCart /> : <></>}
         </Toolbar>
       </AppBar>
 
@@ -136,13 +140,13 @@ function Home() {
             }}
           >
             <ButtonRoute>
-              <Button href="/" sx={{ textTransform: "none", gap: "12px" }}>
+              <Button sx={{ textTransform: "none", gap: "12px" }}>
                 <Icon alt="icon" src={iconBodyBrowse} />
                 <H3Text>Browse</H3Text>
               </Button>
             </ButtonRoute>
             <ButtonRoute>
-              <Button href="/" sx={{ textTransform: "none", gap: "12px" }}>
+              <Button sx={{ textTransform: "none", gap: "12px" }}>
                 <Icon alt="icon" src={iconBodyPlayDice} />
                 <H3Text>Play Dice</H3Text>
               </Button>
@@ -198,43 +202,59 @@ function Home() {
             Quick Navigation
           </Typography>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
+            <Button sx={{ textTransform: "none", gap: "15px" }}>
               <Icon alt="icon" src={iconSidebarGame} />
               <H3Text>Game Page</H3Text>
             </Button>
           </ButtonSideBar>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
-              <Icon alt="icon" src={iconSidebarEroPage} />
-              <H3Text>404 Page</H3Text>
-            </Button>
+            <Link to={"/404"} style={{ textDecoration: "none" }}>
+              <Button sx={{ textTransform: "none", gap: "15px" }}>
+                <Icon alt="icon" src={iconSidebarEroPage} />
+                <H3Text>404 Page</H3Text>
+              </Button>
+            </Link>
           </ButtonSideBar>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
-              <Icon alt="icon" src={iconSidebarEroQuery} />
-              <H3Text>404 Query</H3Text>
-            </Button>
+            <Link to={"/query"} style={{ textDecoration: "none" }}>
+              <Button sx={{ textTransform: "none", gap: "15px" }}>
+                <Icon alt="icon" src={iconSidebarEroQuery} />
+                <H3Text>404 Query</H3Text>
+              </Button>
+            </Link>
           </ButtonSideBar>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
+            <Button
+              href="https://github.com/vuthiet2k/game-store#readme"
+              sx={{ textTransform: "none", gap: "15px" }}
+            >
               <Icon alt="icon" src={iconSidebarCommit} />
               <H3Text>Commit Log</H3Text>
             </Button>
           </ButtonSideBar>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
+            <Button
+              href="https://github.com/vuthiet2k/game-store#readme"
+              sx={{ textTransform: "none", gap: "15px" }}
+            >
               <Icon alt="icon" src={iconSidebarPerfor} />
               <H3Text>Performance</H3Text>
             </Button>
           </ButtonSideBar>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
+            <Button
+              href="https://github.com/vuthiet2k/game-store#readme"
+              sx={{ textTransform: "none", gap: "15px" }}
+            >
               <Icon alt="icon" src={iconSidebarTechnologies} />
               <H3Text>Technologies</H3Text>
             </Button>
           </ButtonSideBar>
           <ButtonSideBar>
-            <Button href="/" sx={{ textTransform: "none", gap: "15px" }}>
+            <Button
+              href="https://github.com/vuthiet2k/game-store"
+              sx={{ textTransform: "none", gap: "15px" }}
+            >
               <Icon alt="icon" src={iconSidebarOurSouce} />
               <H3Text>OurSouce</H3Text>
             </Button>
