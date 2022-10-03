@@ -9,7 +9,7 @@ function EroPage() {
   let navigate = useNavigate();
   setTimeout(() => {
     navigate("/")
-  }, 5000);
+  }, 3000);
   return (
     <Box pt={20} pb={10} sx={{ backgroundColor: "#000" }}>
       <Container

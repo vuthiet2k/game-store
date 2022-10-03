@@ -14,19 +14,90 @@ import React from "react";
 import { ProductContext } from "../context/ProductContext";
 
 function SideBar() {
-  const { dataWishlist, setDataUI, dataRatting, dataUI } =
-    React.useContext(ProductContext);
-  console.log("setDataUI", setDataUI, dataUI);
+  const { setDataUI, setFilter, allData } = React.useContext(ProductContext);
   const handlerWishList = () => {
-    setDataUI(dataWishlist);
+    setDataUI(
+      allData.filter((item) => {
+        return item.wishlist == true;
+      })
+    );
+    setFilter("Wishlist");
   };
-
   const handlerRatting = () => {
-    setDataUI(dataRatting);
+    setDataUI(
+      allData.filter((item) => {
+        return item.ratting === true;
+      })
+    );
+    setFilter("Ratting");
+  };
+  const handlerAction = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.action === true;
+      })
+    );
+    setFilter("Action");
+  };
+  const handlerStrategy = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.strategy === true;
+      })
+    );
+    setFilter("Strategy");
+  };
+  const handlerAdventure = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.adventure === true;
+      })
+    );
+    setFilter("Adventure");
+  };
+  const handlerPuzzle = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.puzzle === true;
+      })
+    );
+    setFilter("Puzzle");
+  };
+  const handlerShooter = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.shooter === true;
+      })
+    );
+    setFilter("Shooter");
+  };
+  const handlerRPG = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.rpg === true;
+      })
+    );
+    setFilter("RPG");
+  };
+  const handlerSport = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.sport === true;
+      })
+    );
+    setFilter("Sport");
+  };
+  const handlerRacing = () => {
+    setDataUI(
+      allData.filter((item) => {
+        return item.racing === true;
+      })
+    );
+    setFilter("Racing");
   };
 
   return (
-    <Box>
+    <Box sx={{ width: "250px", paddingLeft: "40px" }}>
       <Box>
         <H3Title>Filters</H3Title>
         <ButtonSideBar>
@@ -91,7 +162,10 @@ function SideBar() {
       <Box>
         <H3Title>Genres</H3Title>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerAction}
+          >
             <IconGenresAction
               style={{
                 width: "39px",
@@ -108,7 +182,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerStrategy}
+          >
             <IconGenresStrategy
               style={{
                 width: "39px",
@@ -125,7 +202,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerRPG}
+          >
             <IconGenresRPG
               style={{
                 width: "39px",
@@ -142,7 +222,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerShooter}
+          >
             <IconGenresShooter
               style={{
                 width: "39px",
@@ -159,7 +242,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerAdventure}
+          >
             <IconGenresAdventure
               style={{
                 width: "39px",
@@ -176,7 +262,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerPuzzle}
+          >
             <IconGenresPuzzle
               style={{
                 width: "39px",
@@ -193,7 +282,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerRacing}
+          >
             <IconGenresRacing
               style={{
                 width: "39px",
@@ -210,7 +302,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            onClick={handlerSport}
+          >
             <IconGenresSport
               style={{
                 width: "39px",
@@ -251,12 +346,14 @@ const ButtonSideBar = styled("div")({
 });
 
 const H3Title = styled("h3")({
+  height: "30px",
   color: "#fff",
   fontSize: "25px",
   letterSpacing: "1px",
   marginBottom: "22px",
-  marginTop: "22px",
   whiteSpace: "nowrap",
+  fontWeight: "700",
+  fontFamily: "system-ui",
 });
 
 const H3Text = styled("h3")({
@@ -266,4 +363,4 @@ const H3Text = styled("h3")({
   whiteSpace: "nowrap",
 });
 
-export default SideBar;
+export default React.memo(SideBar);

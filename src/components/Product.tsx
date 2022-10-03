@@ -10,29 +10,40 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ProductType } from "../@type/cart";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { postData, putData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
 
 const Product = ({ id, to, src, name, money, love }: ProductType) => {
   const [isLove, setIsLove] = useState<boolean>(love);
-  const { cart, setCart} = useContext(CartContext);
-  const {dataWishlist, setDataWishlist} = useContext(ProductContext)
-  
+  const { cart, setCart } = useContext(CartContext);
+  const { allData, setAllData } = useContext(ProductContext);
   const handlerAddCart = () => {
     postData("cart", { id: id, name: name, money: money }).then((res) =>
-      setCart([res.data, ...cart])
+      setCart([res?.data, ...cart])
     );
   };
   const handlerLove = () => {
+    setIsLove(!isLove);
     putData(`products/${id}`, {
-      wishlist: !isLove,      
-    }).then((res) => {
-      setIsLove(res?.data.wishlist);
-      setDataWishlist([...dataWishlist, res?.data])
-    });
+      wishlist: !love
+    })
+      .then((res) => {
+        let elements = [...allData];
+        elements = elements.map((item) => item.id === id ? {...item, wishlist: res?.data.wishlist} : item);
+        setAllData(elements);
+      })
+      .catch(() => {
+        setIsLove(!isLove);
+      });
   };
+
+  console.log(allData)
+
+  useEffect(() => {
+    setIsLove(love);
+  }, [love]);
 
   return (
     <Card

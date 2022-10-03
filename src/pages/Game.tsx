@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getData } from "../apis";
 import { ExpandMore } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -36,13 +36,13 @@ function Game() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Button
-            href="/store"
-            sx={{ textTransform: "none", color: "rgb(204, 204, 204)" }}
+          <Link
+            to="/store"
+            style={{ textDecoration: "none", color: "rgb(204, 204, 204)" }}
           >
             <ArrowBackIcon />
             <Typography variant="h4">Store</Typography>
-          </Button>
+          </Link>
           <Typography
             variant="h2"
             sx={{
