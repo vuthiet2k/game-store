@@ -24,8 +24,8 @@ function App() {
               <Route element={<PrivateRoutes />}>
                 <Route path="/store" element={<Store />}>
                   <Route path="/store" element={<Topic />} />
-                  <Route path="/store/:productID" element={<Game />} />
                 </Route>
+                <Route path="/store/:productID" element={<Game />} />
                 <Route path="/cart" element={<Cart />} />
               </Route>
               <Route path="/register" element={<Register />} />

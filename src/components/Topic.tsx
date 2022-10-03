@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import Product from "./Product";
 import { ReactComponent as Layout4 } from "../assets/icon/layoutTopic.svg";
 import { ReactComponent as Layout1 } from "../assets/icon/layoutTopic1.svg";
-import { CartContext } from "../context/CartContext";
 import { ProductContext } from "../context/ProductContext";
 
 export const Topic = () => {

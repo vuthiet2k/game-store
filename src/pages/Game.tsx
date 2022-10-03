@@ -1,18 +1,22 @@
 import {
   Box,
-  Button,
   CardActions,
   CardContent,
   Collapse,
   Stack,
   Typography,
 } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getData } from "../apis";
 import { ExpandMore } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
 function Game() {
   let { productID } = useParams();
@@ -29,8 +33,8 @@ function Game() {
   }, [productID]);
 
   return (
-    <Box sx={{ width: "100%", backgroundColor: "#000", padding: "30px 50px" }}>
-      <Box>
+    <Box pt={10} pb={"280px"} sx={{ width: "100%", backgroundColor: "#000" }}>
+      <Box sx={{ padding: "30px 50px" }}>
         <Stack
           direction={"row"}
           justifyContent="space-between"
@@ -38,38 +42,93 @@ function Game() {
         >
           <Link
             to="/store"
-            style={{ textDecoration: "none", color: "rgb(204, 204, 204)" }}
+            style={{
+              textDecoration: "none",
+              color: "rgb(204, 204, 204)",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
           >
             <ArrowBackIcon />
-            <Typography variant="h4">Store</Typography>
+            <Typography
+              variant="h4"
+              sx={{ fontSize: "24px", fontWeight: "700" }}
+            >
+              Store
+            </Typography>
           </Link>
           <Typography
             variant="h2"
             sx={{
               color: "#fff",
-              fontFamily: "GT Ultrabold",
-              fontSize: "3.3em",
-              letterSpacing: "1px",
+              fontFamily: "fantasy",
+              fontSize: "52px",
+              letterSpacing: "5px",
             }}
           >
             {product?.name}
           </Typography>
         </Stack>
-        <Stack direction="row" spacing={6.5} mt={10} mb={20}>
-            <Box
-              component={"img"}
-              sx={{
-                backgroundImage: `url(${product?.avatar})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                width: "100%",
-                padding: "30%",
-                borderRadius: "20px",
-                maxHeight: "580px",
-                maxWidth: "580px",
-              }}
-            ></Box>
-          <Box>
+        <Stack direction="row" mt={"30px"} sx={{ gap: "30px" }}>
+          <Box
+            sx={{
+              width: "65%",
+              borderRadius: "20px",
+            }}
+          >
+            <Swiper
+              cssMode={true}
+              navigation={true}
+              pagination={true}
+              mousewheel={true}
+              keyboard={true}
+              modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+              className="mySwiper"
+              style={{ borderRadius: "20px" }}
+            >
+              <SwiperSlide>
+                <Box
+                  sx={{
+                    backgroundImage: `url(${product?.avatar})`,
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: "120vh",
+                    borderRadius: "20px",
+                    backgroundRepeat: "round",
+                    maxHeight: "550px",
+                  }}
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Box
+                  sx={{
+                    backgroundImage: `url(${product?.avatar1})`,
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: "120vh",
+                    borderRadius: "20px",
+                    backgroundRepeat: "round",
+                    maxHeight: "550px",
+                  }}
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Box
+                  sx={{
+                    backgroundImage: `url(${product?.avatar})`,
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: "120vh",
+                    borderRadius: "20px",
+                    backgroundRepeat: "round",
+                    maxHeight: "550px",
+                  }}
+                />
+              </SwiperSlide>
+            </Swiper>
+          </Box>
+          <Box sx={{ width: "440px", padding: "30px 70px 30px 34px" }}>
             <CardContent>
               <Typography variant="h2" color="#fff">
                 About
