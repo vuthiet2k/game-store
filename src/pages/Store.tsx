@@ -5,7 +5,12 @@ import SideBar from "../components/SideBar";
 function Store() {
   return (
     <Box
-      sx={{ padding: "110px 40px 0", backgroundColor: "#000", display: 'flex', }}
+      sx={{
+        paddingTop: "85px",
+        paddingRight: "40px",
+        backgroundColor: "#000",
+        display: "flex",
+      }}
     >
       <SideBar />
       <Outlet />

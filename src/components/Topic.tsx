@@ -23,6 +23,7 @@ export const Topic = () => {
             letterSpacing: "1px",
             fontWeight: "700",
             mb: "10px",
+            fontFamily: "system-ui",
           }}
         >
           Trending and interesting
@@ -32,7 +33,7 @@ export const Topic = () => {
           sx={{
             color: "#fff",
             fontSize: "16px",
-            letterSpacing: "1px",
+            fontFamily: "system-ui",
           }}
         >
           Based on player counts and ratings

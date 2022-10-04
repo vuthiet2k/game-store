@@ -33,7 +33,7 @@ function UserCart() {
           }}
         >
           <IconRoute alt="icon" src={iconHeadCart} />
-          <H3Route>{cart.length}</H3Route>
+          <H3Route>Cart: {cart.length}</H3Route>
         </Button>
       </Link>
     </Box>

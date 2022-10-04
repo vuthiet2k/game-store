@@ -27,9 +27,9 @@ function Header() {
   };
 
   return (
-    <AppBar sx={{ backgroundColor: "#000" }}>
+    <AppBar sx={{ backgroundColor: "#000", height: "62px" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Box sx={{ gap: "100px", display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ gap: "100px", display: "flex", alignItems: "center" }}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Button
               disableRipple
@@ -40,7 +40,7 @@ function Header() {
             </Button>
           </Link>
 
-          <Box sx={{ height: "35px" }}>
+          <Box>
             <InputSearch
               placeholder="Search games..."
               value={search}
@@ -58,8 +58,8 @@ function Header() {
 }
 
 const InputSearch = styled("input")({
-  width: "470px",
-  height: "100%",
+  width: "450px",
+  height: "35px",
   borderRadius: "8px",
   backgroundColor: "#262626",
   border: "1px transparent",
