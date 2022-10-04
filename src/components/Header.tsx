@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Box } from "@mui/system";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppBar, Button, styled, Toolbar } from "@mui/material";
 
 import UserCart from "./UserCart";
@@ -8,17 +8,21 @@ import iconHeadHome from "../assets/icon/headgame.svg";
 import SearchHead from "../assets/icon/headersearch.svg";
 import { getData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
+import React from "react";
 
 function Header() {
   let user = JSON.parse(localStorage.getItem("USER") || "");
+  let navigate = useNavigate();
   const { setDataUI } = useContext(ProductContext);
   const [search, setSearch] = useState("");
   const handlerChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
   const handlerClickSearch = () => {
+    setSearch("");
     getData(`products?name=${search}`).then((res) => {
       setDataUI(res?.data);
+      navigate("/store");
     });
   };
 
@@ -78,4 +82,4 @@ const H3Route = styled("h3")({
   whiteSpace: "nowrap",
 });
 
-export default Header;
+export default React.memo(Header);
