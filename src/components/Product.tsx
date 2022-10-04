@@ -55,6 +55,10 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
         border: "1px transparent",
         borderRadius: "12px",
         transition: "all 0.3s",
+        "&:hover": {
+          transform: "scale(1.02)",
+          backgroundColor: "#2d2d2d",
+        },
       }}
     >
       <Link to={to}>
