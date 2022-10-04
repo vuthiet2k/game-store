@@ -8,6 +8,7 @@ import iconHeadHome from "../assets/icon/headgame.svg";
 import SearchHead from "../assets/icon/headersearch.svg";
 import { getData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
+import React from "react";
 
 function Header() {
   let user = JSON.parse(localStorage.getItem("USER") || "");
@@ -84,4 +85,4 @@ const H3Route = styled("h3")({
   whiteSpace: "nowrap",
 });
 
-export default Header;
+export default React.memo(Header);
