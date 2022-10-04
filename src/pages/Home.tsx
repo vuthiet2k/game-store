@@ -52,6 +52,7 @@ function Home() {
           <Box sx={{ gap: "30px" }}>
             <Link to="/404" style={{ textDecoration: "none" }}>
               <Button
+                disableRipple
                 sx={{ textTransform: "none", color: "#fff", gap: "18px" }}
               >
                 <IconRoute alt="icon" src={iconHeadHome} />
@@ -60,6 +61,7 @@ function Home() {
             </Link>
             <Link to="/store" style={{ textDecoration: "none" }}>
               <Button
+                disableRipple
                 sx={{
                   textTransform: "none",
                   color: "#fff",

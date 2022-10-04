@@ -103,6 +103,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerWishList}
           >
             <IconFiltersWishlist
@@ -123,6 +124,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerRatting}
           >
             <IconFiltersRating
@@ -141,7 +143,10 @@ function SideBar() {
           </Button>
         </ButtonSideBar>
         <ButtonSideBar>
-          <Button sx={{ textTransform: "none", gap: "15px", p: "0" }}>
+          <Button
+            disableRipple
+            sx={{ textTransform: "none", gap: "15px", p: "0" }}
+          >
             <IconFiltersReviews
               style={{
                 width: "39px",
@@ -164,6 +169,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerAction}
           >
             <IconGenresAction
@@ -184,6 +190,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerStrategy}
           >
             <IconGenresStrategy
@@ -204,6 +211,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerRPG}
           >
             <IconGenresRPG
@@ -224,6 +232,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerShooter}
           >
             <IconGenresShooter
@@ -244,6 +253,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerAdventure}
           >
             <IconGenresAdventure
@@ -264,6 +274,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerPuzzle}
           >
             <IconGenresPuzzle
@@ -284,6 +295,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerRacing}
           >
             <IconGenresRacing
@@ -304,6 +316,7 @@ function SideBar() {
         <ButtonSideBar>
           <Button
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
+            disableRipple
             onClick={handlerSport}
           >
             <IconGenresSport

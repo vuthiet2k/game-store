@@ -27,19 +27,19 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
   const handlerLove = () => {
     setIsLove(!isLove);
     putData(`products/${id}`, {
-      wishlist: !love
+      wishlist: !love,
     })
       .then((res) => {
         let elements = [...allData];
-        elements = elements.map((item) => item.id === id ? {...item, wishlist: res?.data.wishlist} : item);
+        elements = elements.map((item) =>
+          item.id === id ? { ...item, wishlist: res?.data.wishlist } : item
+        );
         setAllData(elements);
       })
       .catch(() => {
         setIsLove(!isLove);
       });
   };
-
-  console.log(allData)
 
   useEffect(() => {
     setIsLove(love);
