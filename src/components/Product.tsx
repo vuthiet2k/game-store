@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ProductType } from "../@type/cart";
-import { useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { postData, putData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
@@ -57,6 +57,15 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
   useEffect(() => {
     setIsLove(love);
   }, [love]);
+  useEffect(() => {
+    setIsLove(
+      Boolean(
+        cart.find((item) => {
+          return item.id === id;
+        })
+      )
+    );
+  }, [added&&true]);
 
   return (
     <Card
@@ -155,4 +164,4 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
   );
 };
 
-export default Product;
+export default memo(Product);

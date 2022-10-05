@@ -56,7 +56,7 @@ function Home() {
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ gap: "30px" }}>
-            <Link to="/store" style={{ textDecoration: "none" }}>
+            <Link to="/404" style={{ textDecoration: "none" }}>
               <Button
                 disableRipple
                 sx={{
