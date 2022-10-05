@@ -7,9 +7,11 @@ import { ProductContext } from "../context/ProductContext";
 
 export const Topic = () => {
   const [layout, setLayout] = useState<number>(3);
-  const { allData, setDataUI, dataUI } = useContext(ProductContext);
+  const { allData, setDataUI, dataUI, filter, setFilter } =
+    useContext(ProductContext);
   const handlerClearFilter = () => {
     setDataUI(allData);
+    setFilter("None");
   };
 
   return (
@@ -63,7 +65,18 @@ export const Topic = () => {
               fontSize: "14px",
             }}
           >
-            Filter by: None
+            Filter by:&nbsp;
+            <Typography
+              paragraph
+              sx={{
+                color: "#fff",
+                fontSize: "14px",
+                fontWeight: "700",
+                display: "contents",
+              }}
+            >
+              {filter}
+            </Typography>
           </Button>
           <Button
             sx={{

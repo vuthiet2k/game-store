@@ -18,7 +18,7 @@ function SideBar() {
   const handlerWishList = () => {
     setDataUI(
       allData.filter((item) => {
-        return item.wishlist == true;
+        return item.wishlist === true;
       })
     );
     setFilter("Wishlist");
