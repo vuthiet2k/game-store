@@ -33,7 +33,14 @@ function Header() {
           <Link to="/" style={{ textDecoration: "none" }}>
             <Button
               disableRipple
-              sx={{ textTransform: "none", color: "#fff", gap: "18px" }}
+              sx={{
+                textTransform: "none",
+                color: "#fff",
+                gap: "18px",
+                "&: active": {
+                  transform: "scale(0.9)",
+                },
+              }}
             >
               <IconRoute alt="icon" src={iconHeadHome} />
               <H3Route>Game Store</H3Route>

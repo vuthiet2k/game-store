@@ -47,13 +47,26 @@ function Home() {
         </video>
       </Box>
 
-      <AppBar sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
+      <AppBar
+        sx={{
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          height: "62px",
+        }}
+      >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ gap: "30px" }}>
-            <Link to="/404" style={{ textDecoration: "none" }}>
+            <Link to="/store" style={{ textDecoration: "none" }}>
               <Button
                 disableRipple
-                sx={{ textTransform: "none", color: "#fff", gap: "18px" }}
+                sx={{
+                  textTransform: "none",
+                  color: "#fff",
+                  gap: "18px",
+                  "&: active": {
+                    transform: "scale(0.9)",
+                  },
+                }}
               >
                 <IconRoute alt="icon" src={iconHeadHome} />
                 <H3Route>Game Store</H3Route>
@@ -67,6 +80,9 @@ function Home() {
                   color: "#fff",
                   gap: "18px",
                   marginLeft: "50px",
+                  "&: active": {
+                    transform: "scale(0.9)",
+                  },
                 }}
               >
                 <IconRoute alt="icon" src={iconHeadStore} />
@@ -139,14 +155,18 @@ function Home() {
               justifyContent: "space-between",
             }}
           >
-            <ButtonRoute>
-              <Icon alt="icon" src={iconBodyBrowse} />
-              <H3Text>Browse</H3Text>
-            </ButtonRoute>
-            <ButtonRoute>
-              <Icon alt="icon" src={iconBodyPlayDice} />
-              <H3Text>Play Dice</H3Text>
-            </ButtonRoute>
+            <Link to="/store" style={{ textDecoration: "none" }}>
+              <ButtonRoute>
+                <Icon alt="icon" src={iconBodyBrowse} />
+                <H3Text>Browse</H3Text>
+              </ButtonRoute>
+            </Link>
+            <Link to="/store/1" style={{ textDecoration: "none" }}>
+              <ButtonRoute>
+                <Icon alt="icon" src={iconBodyPlayDice} />
+                <H3Text>Play Dice</H3Text>
+              </ButtonRoute>
+            </Link>
             <ButtonRoute href="https://github.com/gianlucajahn/react-ecommerce-store">
               <Icon alt="icon" src={iconBodyGithub} />
               <H3Text>Github</H3Text>

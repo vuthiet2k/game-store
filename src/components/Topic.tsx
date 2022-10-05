@@ -77,6 +77,9 @@ export const Topic = () => {
               height: "40px",
               padding: "8px 22px",
               fontSize: "14px",
+              "&: active": {
+                transform: "scale(0.9)",
+              },
             }}
             onClick={handlerClearFilter}
           >
@@ -94,25 +97,53 @@ export const Topic = () => {
           >
             Display options:
           </Typography>
-          <Button onClick={() => setLayout(3)}>
+          <Button
+            disableRipple
+            sx={{
+              height: "48px",
+              backgroundColor: "#282828",
+              fill: layout === 3 ? "#fff" : "rgb(111, 111, 111)",
+              border: "1px transparent",
+              borderRadius: "8px",
+              m: "0 5px",
+              "&: active": {
+                transform: "scale(0.9)",
+              },
+            }}
+            onClick={() => setLayout(3)}
+          >
             <Layout4
               style={{
                 width: "48px",
                 height: "48px",
                 cursor: "pointer",
                 transition: "all .2s",
-                fill: "#fff",
+                // fill: "#fff",
               }}
             />
           </Button>
-          <Button onClick={() => setLayout(8)}>
+          <Button
+            disableRipple
+            sx={{
+              height: "48px",
+              backgroundColor: "#282828",
+              fill: layout === 8 ? "#fff" : "rgb(111, 111, 111)",
+              border: "1px transparent",
+              borderRadius: "8px",
+              m: "0 5px",
+              "&: active": {
+                transform: "scale(0.9)",
+              },
+            }}
+            onClick={() => setLayout(8)}
+          >
             <Layout1
               style={{
                 width: "48px",
                 height: "48px",
                 cursor: "pointer",
                 transition: "all .2s",
-                fill: "#fff",
+                // fill: "#fff",
               }}
             />
           </Button>
@@ -125,7 +156,7 @@ export const Topic = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: layout === 3 ? "left" : "center",
             color: "#fff",
           }}
         >
