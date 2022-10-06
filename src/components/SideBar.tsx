@@ -12,9 +12,11 @@ import { ReactComponent as IconGenresSport } from "../assets/icon/genressport.sv
 import { Box, Button, styled } from "@mui/material";
 import React from "react";
 import { ProductContext } from "../context/ProductContext";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 function SideBar() {
-  const { setDataUI, setFilter, allData } = React.useContext(ProductContext);
+  const { setDataUI, setFilter, allData, filter } =
+    React.useContext(ProductContext);
   const handlerWishList = () => {
     setDataUI(
       allData.filter((item) => {
@@ -111,16 +113,14 @@ function SideBar() {
             onClick={handlerWishList}
           >
             <IconFiltersWishlist
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
+              style={
+                filter === "Wishlist"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              }
             />
             <H3Text>Wishlist</H3Text>
           </Button>
@@ -131,18 +131,14 @@ function SideBar() {
             disableRipple
             onClick={handlerRatting}
           >
-            <IconFiltersRating
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconFiltersRating style={
+                filter === "Ratings"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Ratings</H3Text>
           </Button>
         </ButtonSideBar>
@@ -151,18 +147,14 @@ function SideBar() {
             disableRipple
             sx={{ textTransform: "none", gap: "15px", p: "0" }}
           >
-            <IconFiltersReviews
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconFiltersReviews style={
+                filter === "Reviews"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Reviews</H3Text>
           </Button>
         </ButtonSideBar>
@@ -176,18 +168,14 @@ function SideBar() {
             disableRipple
             onClick={handlerAction}
           >
-            <IconGenresAction
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresAction style={
+                filter === "Action"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Action</H3Text>
           </Button>
         </ButtonSideBar>
@@ -197,18 +185,14 @@ function SideBar() {
             disableRipple
             onClick={handlerStrategy}
           >
-            <IconGenresStrategy
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresStrategy style={
+                filter === "Strategy"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Strategy</H3Text>
           </Button>
         </ButtonSideBar>
@@ -218,18 +202,14 @@ function SideBar() {
             disableRipple
             onClick={handlerRPG}
           >
-            <IconGenresRPG
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresRPG style={
+                filter === "RPG"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>RPG</H3Text>
           </Button>
         </ButtonSideBar>
@@ -239,18 +219,14 @@ function SideBar() {
             disableRipple
             onClick={handlerShooter}
           >
-            <IconGenresShooter
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresShooter style={
+                filter === "Shooter"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Shooter</H3Text>
           </Button>
         </ButtonSideBar>
@@ -260,18 +236,14 @@ function SideBar() {
             disableRipple
             onClick={handlerAdventure}
           >
-            <IconGenresAdventure
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresAdventure style={
+                filter === "Adventure"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Adventure</H3Text>
           </Button>
         </ButtonSideBar>
@@ -281,18 +253,14 @@ function SideBar() {
             disableRipple
             onClick={handlerPuzzle}
           >
-            <IconGenresPuzzle
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresPuzzle style={
+                filter === "Puzzle"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Puzzle</H3Text>
           </Button>
         </ButtonSideBar>
@@ -302,18 +270,14 @@ function SideBar() {
             disableRipple
             onClick={handlerRacing}
           >
-            <IconGenresRacing
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresRacing style={
+                filter === "Racing"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Racing</H3Text>
           </Button>
         </ButtonSideBar>
@@ -323,18 +287,14 @@ function SideBar() {
             disableRipple
             onClick={handlerSport}
           >
-            <IconGenresSport
-              style={{
-                width: "28px",
-                height: "32px",
-                border: "1px transparent",
-                borderRadius: "8px",
-                padding: "6px 5px 4px",
-                cursor: "pointer",
-                transition: "all .2s",
-                fill: "#fff",
-              }}
-            />
+            <IconGenresSport style={
+                filter === "Sport"
+                  ? {
+                      fill: "#000",
+                      backgroundColor: "#fff",
+                    }
+                  : {}
+              } />
             <H3Text>Sport</H3Text>
           </Button>
         </ButtonSideBar>
@@ -352,7 +312,14 @@ const ButtonSideBar = styled("div")({
   cursor: "pointer",
   display: "flex",
   "& svg": {
+    width: "28px",
+    height: "32px",
+    border: "1px transparent",
+    borderRadius: "8px",
+    padding: "6px 5px 4px",
+    transition: "all .2s",
     backgroundColor: "rgb(45, 45, 45)",
+    fill: "#fff",
   },
   "&:hover": {
     "& svg": {
