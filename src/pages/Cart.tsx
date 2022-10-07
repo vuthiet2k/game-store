@@ -1,5 +1,4 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
-import { deleteData } from "../apis";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { CartType } from "../@type/cart";
@@ -7,7 +6,6 @@ import { Stack } from "@mui/system";
 
 function Cart() {
   const handlerDelete = (id: number) => {
-    deleteData(`cart/${id}`);
     setCart(cart.filter((item) => item.id !== id));
   };
   const { cart, setCart } = useContext(CartContext);

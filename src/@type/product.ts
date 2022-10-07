@@ -12,6 +12,7 @@ export type ProductContextType = {
 
 export type ProductType = {
   id: number;
+  msp: string;
   name: string;
   avatar: string;
   price: string;

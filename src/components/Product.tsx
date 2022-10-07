@@ -13,29 +13,17 @@ import { Link } from "react-router-dom";
 import { ProductType } from "../@type/cart";
 import { memo, useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import { postData, putData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
+import { putData } from "../apis";
 
-const Product = ({ id, to, src, name, money, love }: ProductType) => {
+const Product = ({ id, to, src, name, money, love, isadded }: ProductType) => {
   const [isLove, setIsLove] = useState<boolean>(love);
   const { cart, setCart } = useContext(CartContext);
-  const [added, setAdded] = useState<boolean>(
-    Boolean(
-      cart.find((item) => {
-        return item.id === id;
-      })
-    )
-  );
+  const [added, setAdded] = useState<boolean>(isadded);
   const { allData, setAllData } = useContext(ProductContext);
   const handlerAddCart = () => {
     setAdded(true);
-    postData("cart", { id: id, name: name, money: money })
-      .then((res) => {
-        setCart([res?.data, ...cart]);
-      })
-      .catch((err) => {
-        setAdded(false);
-      });
+    setCart([{ id: id, name: name, money: money }, ...cart]);
   };
   const handlerLove = () => {
     setIsLove(!isLove);
@@ -58,14 +46,8 @@ const Product = ({ id, to, src, name, money, love }: ProductType) => {
     setIsLove(love);
   }, [love]);
   useEffect(() => {
-    setIsLove(
-      Boolean(
-        cart.find((item) => {
-          return item.id === id;
-        })
-      )
-    );
-  }, [added&&true]);
+    setAdded(isadded)
+  }, [isadded]);
 
   return (
     <Card

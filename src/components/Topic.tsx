@@ -4,8 +4,10 @@ import Product from "./Product";
 import { ReactComponent as Layout4 } from "../assets/icon/layoutTopic.svg";
 import { ReactComponent as Layout1 } from "../assets/icon/layoutTopic1.svg";
 import { ProductContext } from "../context/ProductContext";
+import { CartContext } from "../context/CartContext";
 
 export const Topic = () => {
+  const { cart } = useContext(CartContext);
   const [layout, setLayout] = useState<number>(3);
   const { allData, setDataUI, dataUI, filter, setFilter } =
     useContext(ProductContext);
@@ -193,6 +195,13 @@ export const Topic = () => {
                       src={product.avatar}
                       money={product.price}
                       love={product.wishlist}
+                      isadded={
+                        cart.find((item) => {
+                          return item.id === product.id;
+                        })
+                          ? true
+                          : false
+                      }
                     />
                   </Grid>
                 );

@@ -1,7 +1,7 @@
+import useLocalStorage from "@rehooks/local-storage";
 import * as React from "react";
 
 import { CartContextType, CartType, ProductType } from "../@type/cart";
-import { getData } from "../apis";
 
 export const CartContext = React.createContext<CartContextType>(
   {} as CartContextType
@@ -12,15 +12,13 @@ type PropChildren = {
 };
 
 const CartProvider: React.FC<PropChildren> = ({ children }) => {
-  const [cart, setCart] = React.useState<CartType[]>([]);
-  React.useEffect(() => {
-    getData("cart").then((res) => {
-      setCart(res?.data);
-    });
-  }, []);
+  const [productCarts, setProductsCarts] = useLocalStorage<CartType[]>(
+    'carts',
+    []
+  );
   
   return (
-    <CartContext.Provider value={{ cart, setCart}}>
+    <CartContext.Provider value={{ cart: productCarts, setCart: setProductsCarts}}>
       {children}
     </CartContext.Provider>
   );

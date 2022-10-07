@@ -12,7 +12,6 @@ import { ReactComponent as IconGenresSport } from "../assets/icon/genressport.sv
 import { Box, Button, styled } from "@mui/material";
 import React from "react";
 import { ProductContext } from "../context/ProductContext";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 function SideBar() {
   const { setDataUI, setFilter, allData, filter } =
