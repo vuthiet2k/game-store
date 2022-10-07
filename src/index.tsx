@@ -1,15 +1,18 @@
-import {Provider} from 'react-redux';
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./Redux/Store";
+import { Box } from "@mui/material";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <Provider store={store}>
-    <App />
+    <Box sx={{backgroundColor: "#000"}}>
+      <App />
+    </Box>
   </Provider>
 );
 

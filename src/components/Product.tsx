@@ -46,7 +46,7 @@ const Product = ({ id, to, src, name, money, love, isadded }: ProductType) => {
     setIsLove(love);
   }, [love]);
   useEffect(() => {
-    setAdded(isadded)
+    setAdded(isadded);
   }, [isadded]);
 
   return (

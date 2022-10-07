@@ -9,6 +9,7 @@ import SearchHead from "../assets/icon/headersearch.svg";
 import { getData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
 import React from "react";
+import { motion } from "framer-motion";
 
 function Header() {
   let user = JSON.parse(localStorage.getItem("USER") || "");
