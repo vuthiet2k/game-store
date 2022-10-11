@@ -32,7 +32,7 @@ function UserCart() {
           marginLeft: "30px",
         }}
         onClick={() => {
-          navigate("/cart-in");
+          navigate("/cart");
         }}
       >
         <IconRoute alt="icon" src={iconHeadCart} />

@@ -5,8 +5,11 @@ import { ReactComponent as Layout4 } from "../assets/icon/layoutTopic.svg";
 import { ReactComponent as Layout1 } from "../assets/icon/layoutTopic1.svg";
 import { ProductContext } from "../context/ProductContext";
 import { CartContext } from "../context/CartContext";
+// import { useSelector } from "react-redux";
 
 export const Topic = () => {
+  // let cartRedux = useSelector(state => state);
+  // console.log(cartRedux);
   const { cart } = useContext(CartContext);
   const [layout, setLayout] = useState<number>(3);
   const { allData, setDataUI, dataUI, filter, setFilter } =
@@ -55,8 +58,8 @@ export const Topic = () => {
       >
         <Box>
           <Button
+            disabled
             sx={{
-              color: "#fff",
               textTransform: "none",
               backgroundColor: "#262626",
               border: "1px transparent",
@@ -64,10 +67,18 @@ export const Topic = () => {
               transition: "all 0.3s",
               height: "40px",
               padding: "8px 22px",
-              fontSize: "14px",
             }}
           >
-            Filter by:&nbsp;
+            <Typography
+              paragraph
+              sx={{
+                color: "#fff",
+                fontSize: "14px",
+                display: "contents",
+              }}
+            >
+              Filter by:&nbsp;
+            </Typography>
             <Typography
               paragraph
               sx={{
@@ -90,6 +101,7 @@ export const Topic = () => {
               borderRadius: "12px",
               transition: "all 0.3s",
               height: "40px",
+              fontWeight: "700",
               padding: "8px 22px",
               fontSize: "14px",
               "&: active": {

@@ -2,14 +2,12 @@ import { useContext, useState } from "react";
 import { Box } from "@mui/system";
 import { Link, useNavigate } from "react-router-dom";
 import { AppBar, Button, styled, Toolbar } from "@mui/material";
-
 import UserCart from "./UserCart";
 import iconHeadHome from "../assets/icon/headgame.svg";
 import SearchHead from "../assets/icon/headersearch.svg";
 import { getData } from "../apis";
 import { ProductContext } from "../context/ProductContext";
 import React from "react";
-import { motion } from "framer-motion";
 
 function Header() {
   let user = JSON.parse(localStorage.getItem("USER") || "");

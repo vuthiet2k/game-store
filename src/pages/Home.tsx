@@ -107,7 +107,6 @@ function Home() {
           </Toolbar>
         </AppBar>
       </motion.div>
-
       <Box
         sx={{
           height: 1,
@@ -193,13 +192,13 @@ function Home() {
                 Play Dice
               </H3Text>
             </ButtonRoute>
-            <ButtonRoute href="https://github.com/gianlucajahn/react-ecommerce-store">
+            <ButtonRoute href="https://github.com/vuthiet2k/game-store">
               <Icon alt="icon" src={iconBodyGithub} />
               <H3Text sx={{ display: { xs: "none", sm: "inline-block" } }}>
                 Github
               </H3Text>
             </ButtonRoute>
-            <ButtonRoute href="https://www.linkedin.com/in/gianlucajahn/">
+            <ButtonRoute href="https://www.linkedin.com/">
               <Icon alt="icon" src={iconBodyLinkedLn} />
               <H3Text sx={{ display: { xs: "none", sm: "inline-block" } }}>
                 Linkedln

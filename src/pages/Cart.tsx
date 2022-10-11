@@ -14,6 +14,8 @@ function Cart() {
       p={20}
       sx={{
         backgroundColor: "#000",
+        color: "#fff",
+        fontSize: "60px",
       }}
     >
       <Stack sx={{ alignItems: "center" }}>
