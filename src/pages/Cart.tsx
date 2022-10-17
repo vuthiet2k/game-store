@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { CartType } from "../@type/cart";
 import { Stack } from "@mui/system";
+import AnimatedCart from "../animations/AnimatedCart";
 
 function Cart() {
   const handlerDelete = (id: number) => {
@@ -10,17 +11,18 @@ function Cart() {
   };
   const { cart, setCart } = useContext(CartContext);
   return (
-    <Box
-      p={20}
-      sx={{
-        backgroundColor: "#000",
-        color: "#fff",
-        fontSize: "60px",
-      }}
-    >
-      <Stack sx={{ alignItems: "center" }}>
-        {cart && cart.length > 0
-          ? cart?.map((game: CartType) => {
+    <AnimatedCart>
+      <Box
+        p={20}
+        sx={{
+          backgroundColor: "#000",
+          color: "#fff",
+          fontSize: "60px",
+        }}
+      >
+        <Stack sx={{ alignItems: "center" }}>
+          {cart && cart.length > 0 ? (
+            cart?.map((game: CartType) => {
               return (
                 <Paper
                   key={game.id}
@@ -55,9 +57,17 @@ function Cart() {
                 </Paper>
               );
             })
-          : "No games added"}
-      </Stack>
-    </Box>
+          ) : (
+            <Typography
+              paragraph
+              sx={{ color: "#999", margin: "0", fontSize: "24px" }}
+            >
+              "No games added"
+            </Typography>
+          )}
+        </Stack>
+      </Box>
+    </AnimatedCart>
   );
 }
 

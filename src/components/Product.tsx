@@ -14,46 +14,46 @@ import { ProductType } from "../@type/cart";
 import { memo, useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { ProductContext } from "../context/ProductContext";
-import { putData } from "../apis";
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import {CartAciton} from "../Redux/cartSlice"
+// import { useDispatch } from "react-redux";
+// import {CartAciton} from "../Redux/cartSlice"
 
 const Product = ({ id, to, src, name, money, love, isadded }: ProductType) => {
   const [isLove, setIsLove] = useState<boolean>(love);
   const { cart, setCart } = useContext(CartContext);
   const [added, setAdded] = useState<boolean>(isadded);
   const { allData, setAllData } = useContext(ProductContext);
-  let dispatch = useDispatch();
+  
+  // let dispatch = useDispatch();
   const handlerAddCart = () => {
     setAdded(true);
     setCart([{ id: id, name: name, money: money }, ...cart]);
-    dispatch(CartAciton.addCart({ id: id, name: name, money: money }))
+    // dispatch(CartAciton.addCart({ id: id, name: name, money: money }))
     toast.success("Thêm sản phẩm thành công!");
   };
   const handlerLove = () => {
     setIsLove(!isLove);
-    putData(`products/${id}`, {
-      wishlist: !love,
-    })
-      .then((res) => {
-        let elements = [...allData];
-        elements = elements.map((item) =>
-          item.id === id ? { ...item, wishlist: res?.data.wishlist } : item
-        );
-        setAllData(elements);
-      })
-      .catch(() => {
-        setIsLove(!isLove);
-      });
+    let elements = [...allData];
+    elements = elements.map((item) =>
+      item.id === id ? { ...item, wishlist: !isLove} : item
+    );
+    setAllData(elements);
+    // putData(`products/${id}`, {
+    //   wishlist: !love,
+    // })
+    //   .then((res) => {
+    //   })
+    //   .catch(() => {
+    //     setIsLove(!isLove);
+    //   });
   };
 
   useEffect(() => {
     setIsLove(love);
-  }, [love]);
+  }, [id]);
   useEffect(() => {
     setAdded(isadded);
-  }, [isadded]);
+  }, [id]);
 
   return (
     <>

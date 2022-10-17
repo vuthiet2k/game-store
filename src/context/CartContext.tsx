@@ -1,7 +1,7 @@
 import useLocalStorage from "@rehooks/local-storage";
 import * as React from "react";
 
-import { CartContextType, CartType, ProductType } from "../@type/cart";
+import { CartContextType, CartType } from "../@type/cart";
 
 export const CartContext = React.createContext<CartContextType>(
   {} as CartContextType

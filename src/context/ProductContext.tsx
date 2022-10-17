@@ -1,3 +1,4 @@
+import useLocalStorage from "@rehooks/local-storage";
 import React from "react";
 import { ProductContextType, ProductType } from "../@type/product";
 import { getData } from "../apis";
@@ -11,12 +12,12 @@ type PropChildren = {
 };
 
 export const ProductProvider: React.FC<PropChildren> = ({ children }) => {
-  const [allData, setAllData] = React.useState<ProductType[]>([]);
+  const [allData, setAllData] = useLocalStorage<ProductType[]>("data", []);
   const [dataUI, setDataUI] = React.useState<ProductType[]>([]);
   const [filter, setFilter] = React.useState<string>("None");
   React.useEffect(() => {
     getData("products").then((res) => {
-      setAllData(res?.data);
+      setAllData([...res?.data]);
       setDataUI(res?.data);
     });
   }, []);

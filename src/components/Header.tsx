@@ -12,17 +12,18 @@ import React from "react";
 function Header() {
   let user = JSON.parse(localStorage.getItem("USER") || "");
   let navigate = useNavigate();
-  const { setDataUI } = useContext(ProductContext);
+  const { setDataUI, setFilter } = useContext(ProductContext);
   const [search, setSearch] = useState("");
   const handlerChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
   const handlerClickSearch = () => {
-    setSearch("");
+    setFilter(search)
     getData(`products?name=${search}`).then((res) => {
       setDataUI(res?.data);
       navigate("/store");
     });
+    setSearch("");
   };
 
   return (

@@ -187,38 +187,53 @@ export const Topic = () => {
             color: "#fff",
           }}
         >
-          {dataUI && dataUI.length > 0
-            ? dataUI.map((product, index) => {
-                return (
-                  <Grid
-                    item={true}
-                    xs={layout}
-                    key={index}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Product
-                      id={product.id}
-                      to={`/store/${product.id}`}
-                      name={product.name}
-                      src={product.avatar}
-                      money={product.price}
-                      love={product.wishlist}
-                      isadded={
-                        cart.find((item) => {
-                          return item.id === product.id;
-                        })
-                          ? true
-                          : false
-                      }
-                    />
-                  </Grid>
-                );
-              })
-            : "Không có dữ liệu"}
+          {dataUI && dataUI.length > 0 ? (
+            dataUI.map((product, index) => {
+              return (
+                <Grid
+                  item={true}
+                  xs={layout}
+                  key={index}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Product
+                    id={product.id}
+                    to={`/store/${product.id}`}
+                    name={product.name}
+                    src={product.avatar}
+                    money={product.price}
+                    love={product.wishlist}
+                    isadded={
+                      cart.find((item) => {
+                        return item.id === product.id;
+                      })
+                        ? true
+                        : false
+                    }
+                  />
+                </Grid>
+              );
+            })
+          ) : (
+            <Typography
+              paragraph
+              sx={{
+                mt: "50px",
+                ml: "15px",
+                color: "#fff",
+                fontSize: "30px",
+                letterSpacing: "1px",
+                fontWeight: "800",
+                fontFamily: "system-ui",
+              }}
+            >
+              Không có dữ liệu
+            </Typography>
+          )}
         </Grid>
       </Box>
     </Box>
